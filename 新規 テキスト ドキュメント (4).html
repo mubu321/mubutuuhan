@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubuzon - お買い物</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            overflow: auto;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        header h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product {
+            text-align: center;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e47911;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff9900;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff7f00;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #purchaseForm input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        #purchaseForm button {
+            background-color: #4CAF50;
+        }
+
+        #purchaseSuccess h2 {
+            color: green;
+            margin-top: 20px;
+        }
+
+        #backButton {
+            background-color: #007bff;
+        }
+
+        .additional-form input {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mubuzonむぶカ販売</h1><br><br>
+        </header>
+        
+        <main>
+            <div class="product">
+                <h2>むぶカ―ド2枚入り</h2><br><br>
+                <p class="price" id="price">価格: ¥195</p><br><br>
+                <button id="buyButton">買う</button>
+            </div>
+        </main>
+
+        <div id="purchaseForm" class="hidden">
+            <h2>購入情報を入力してください</h2><br><br>
+            <form id="infoForm">
+                <label for="name">名前:</label>
+                <input type="text" id="name" required><br><br>
+                <label for="email">メール:</label>
+                <input type="email" id="email" required><br><br>
+                <label for="food">昨日食べたもの:</label>
+                <input type="text" id="food" required><br><br>
+                <label for="color">好きな色は何ですか？:</label>
+                <input type="text" id="color" required><br><br>
+                <label for="hobby">趣味:</label>
+                <input type="text" id="hobby"><br><br>
+                <label for="movie">好きな映画:</label>
+                <input type="text" id="movie"><br><br>
+                <label for="book">最近読んだ本:</label>
+                <input type="text" id="book"><br><br>
+                <label for="music">好きな音楽:</label>
+                <input type="text" id="music"><br><br>
+                <label for="sports">好きなスポーツ:</label>
+                <input type="text" id="sports"><br><br>
+                <label for="pet">ペットはいますか？</label>
+                <input type="text" id="pet"><br><br>
+                <label for="dream">将来の夢:</label>
+                <input type="text" id="dream"><br><br>
+                <label for="car">好きな車:</label>
+                <input type="text" id="car"><br><br>
+                <label for="food_preference">食べ物の好み:</label>
+                <input type="text" id="food_preference"><br><br>
+                <label for="drink">好きな飲み物:</label>
+                <input type="text" id="drink"><br><br>
+                <label for="travel">行きたい場所:</label>
+                <input type="text" id="travel"><br><br>
+                <label for="school">通っている学校:</label>
+                <input type="text" id="school"><br><br>
+                <label for="job">仕事:</label>
+                <input type="text" id="job"><br><br>
+                <label for="goal">今後の目標:</label>
+                <input type="text" id="goal"><br><br>
+                <label for="season">好きな季節:</label>
+                <input type="text" id="season"><br><br>
+                <label for="quote">好きな名言:</label>
+                <input type="text" id="quote"><br><br>
+                <label for="celebrity">好きな有名人:</label>
+                <input type="text" id="celebrity"><br><br>
+                <label for="time">現在の時間:</label>
+                <input type="text" id="time"><br><br>
+                <label for="weather">天気:</label>
+                <input type="text" id="weather"><br><br>
+                <label for="mood">今の気分:</label>
+                <input type="text" id="mood"><br><br>
+                <label for="favorite_food">好きな食べ物:</label>
+                <input type="text" id="favorite_food"><br><br>
+                <label for="plan">今日の予定:</label>
+                <input type="text" id="plan"><br><br>
+                <label for="funfact">面白い事実:</label>
+                <input type="text" id="funfact"><br><br>
+                <label for="celebration">今年のお年玉何円か:</label>
+                <input type="text" id="celebration"><br><br>
+                <button type="submit">次へ</button>
+            </form>
+        </div>
+
+        <div id="additionalInfoForm" class="hidden">
+            <h2>追加情報を入力してください (25項目)</h2>
+            <form id="additionalInfoFormData">
+                <div class="additional-form">
+                    <label for="extraInfo1">あなたは何年に生まれたか:</label>
+                    <input type="text" id="nannen"><br><br>
+                    <label for="extraInfo2">寿限無全文ひらがなで:</label>
+                    <input type="text" id="zyugemu"><br><br>
+                    <label for="extraInfo3">974274×472426473267=の答えを求めなさい。:</label>
+                    <input type="text" id="suugaku"><br><br>
+                    <label for="extraInfo4">NDSの解像度は？:</label>
+                    <input type="text" id="DS"><br><br>
+                    <label for="extraInfo5">ハリーポッターの中の呪文を4つ書いて:</label>
+                    <input type="text" id="hariii"><br><br>
+                    <label for="extraInfo6">富士山の高さは何センチ？:</label>
+                    <input type="text" id="huzisan"><br><br>
+                    <label for="extraInfo7">円周率全て答えなさい。:</label>
+                    <input type="text" id="pi"><br><br>
+
+                    <button type="submit">購入する</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="purchaseSuccess" class="hidden">
+            <h2>売り切れました</h2>
+            <button id="backButton">戻る</button>
+        </div>
+    </div>
+
+    <script>
+        // 正しい答え
+        const correctAnswers = {
+            zyugemu: "じゅげむ じゅげむ ごこうのすりきれ かいじゃりすいぎょの すいぎょうまつ うんらいまつ ふうらいまつ くうねるところに すむところ やぶらこうじの ぶらこうじ ぱいぽ ぱいぽ ぱいぽの しゅーりんがん しゅーりんがんの ぐーりんだい ぐーりんだいの ぽんぽこぴーの ぽんぽこなーの ちょうきゅうめいの ちょうすけ",
+            suugaku: "460506355089894002431314091338518327903438502032758825445281142338430", // This is the correct answer to 974274×472426473267
+            DS: "256×192", // NDS Resolution
+            huzisan: "377600cm", // Mount Fuji height in meters
+            pi: "3.141592653589793238462643383279502884197169399375105820974944" // Full Pi (approximation)
+        };
+
+        // ランダム価格を設定する関数
+        function getRandomPrice() {
+            return Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000; // 1000円から5000円の間でランダム
+        }
+
+        // 購入ボタンを押した際の処理
+        document.getElementById('buyButton').addEventListener('click', function() {
+            const randomPrice = getRandomPrice();
+            document.getElementById('price').textContent = '価格: ¥' + randomPrice;
+            
+            // 商品価格を変更
+            document.querySelector('.product').style.display = 'none';
+            document.getElementById('purchaseForm').classList.remove('hidden');
+        });
+
+        // 購入フォームの送信処理
+        document.getElementById('infoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // ページリロードを防ぐ
+
+            // 最初のフォームを隠し、追加情報フォームを表示
+            document.getElementById('purchaseForm').classList.add('hidden');
+            document.getElementById('additionalInfoForm').classList.remove('hidden');
+        });
+
+        // 追加情報フォームの送信処理
+        document.getElementById('additionalInfoFormData').addEventListener('submit', function(event) {
+            event.preventDefault(); // ページリロードを防ぐ
+
+            // 正しい答えを確認
+            let allCorrect = true;
+
+            // 各質問の回答を検証（寿限無とハリーポッターの呪文は除外）
+            for (const [key, value] of Object.entries(correctAnswers)) {
+                const userAnswer = document.getElementById(key).value;
+                if (userAnswer !== value) {
+                    allCorrect = false;
+                    break;
+                }
+            }
+
+            if (allCorrect) {
+                // 購入成功メッセージを表示
+                document.getElementById('additionalInfoForm').classList.add('hidden');
+                document.getElementById('purchaseSuccess').classList.remove('hidden');
+            } else {
+                alert("すべての質問に正しい答えを入力してください！");
+            }
+        });
+
+        // 戻るボタンの処理
+        document.getElementById('backButton').addEventListener('click', function() {
+            location.reload(); // ページをリロードして最初の状態に戻す
+        });
+    </script>
+</body>
+</html>
